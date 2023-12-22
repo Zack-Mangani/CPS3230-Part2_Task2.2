@@ -170,13 +170,6 @@ public class EbayTester implements FsmModel {
         assertEquals(IsDailyDealsInitiated, sut.isDailyDealsInitiated());
     }
 
-
-
-
-
-
-
-    //Test runner
     @Test
     public void EbayOperatorModelRunner() {
         //final AllRoundTester tester = new AllRoundTester(new EbayTester());
@@ -185,12 +178,12 @@ public class EbayTester implements FsmModel {
         final RandomTester tester = new RandomTester(new EbayTester());
 
         tester.setRandom(new Random());
-        tester.buildGraph(); //Builds a model of our FSM to ensure that the coverage metrics are correct.
-        tester.addListener(new StopOnFailureListener()); //This listener forces the test class to stop running as soon as a failure is encountered in the model.
-        tester.addListener("verbose"); //This gives you printed statements of the transitions being performed along with the source and destination states.
-        tester.addCoverageMetric(new TransitionPairCoverage()); //Records the transition pair coverage i.e. the number of paired transitions traversed during the execution of the test.
-        tester.addCoverageMetric(new StateCoverage()); //Records the state coverage i.e. the number of states which have been visited during the execution of the test.
-        tester.addCoverageMetric(new ActionCoverage()); //Records the number of @Action methods which have ben executed during the execution of the test.
+        tester.buildGraph();
+        tester.addListener(new StopOnFailureListener());
+        tester.addListener("verbose");
+        tester.addCoverageMetric(new TransitionPairCoverage());
+        tester.addCoverageMetric(new StateCoverage());
+        tester.addCoverageMetric(new ActionCoverage());
 
         tester.generate(100);
         tester.printCoverage();
